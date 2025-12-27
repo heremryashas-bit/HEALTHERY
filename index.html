@@ -30,14 +30,18 @@
     <div class="toggle" onclick="document.body.classList.toggle('dark')">Dark Mode</div>
     <div id="results" class="grid"></div>
 
-    <script>
-        const data = [
-            // 200+ items (example 30 here—expand with full list from Harvard/USDA)
-            {name: "Banana", type: "Fruit", protein: "1.3g", calories: "89", vitamins: "C, B6, Potassium", season: "Year-round", temp: "25-30°C", origins: "Southeast Asia", benefits: "Energy boost, digestion, heart health", diseases: "Blood pressure, anemia", photo: "https://images.unsplash.com/photo-1571771894821-ce9b6b553831", glb: "https://cdn.sketchfab.com/models/free-fruit.glb" /* Use free pack GLB URLs */},
-            {name: "Apple", type: "Fruit", protein: "0.5g", calories: "52", vitamins: "C, K, Fiber", season: "Autumn", temp: "15-21°C", origins: "Central Asia", benefits: "Heart health, weight management, gut health", diseases: "Diabetes, heart disease", photo: "https://images.unsplash.com/photo-1560806887-1f58a95cb1e1", glb: null},
-            // Add 170+ more: Strawberry, Orange, Broccoli, Carrot, Tomato, Spinach, Kale, Mango, Pineapple, Avocado, Blueberry, Pomegranate, Lemon, Lime, Grapefruit, Blackberries, Watermelon, Kiwi, Pear, Peach, Plum, Cherry, Grape, Raspberry, Cranberry, Beet, Cauliflower, Cabbage, Brussels Sprouts, Asparagus, Eggplant, Garlic, Onion, Potato, Sweet Potato, Pumpkin, Zucchini, Cucumber, Bell Pepper, Chili Pepper, Green Peas, Lettuce, Celery, Radish, Turnip, Ginger, Turmeric, etc.
-            // Use sources for details: Harvard powerhouse list, seasonal guides.
-        ];
+   const data = [
+    {name: "Banana", type: "Fruit", protein: "1.3g", calories: "89", vitamins: "C, B6, Potassium", season: "Year-round", temp: "25-30°C", origins: "Southeast Asia", benefits: "Energy boost, digestion aid, heart health", diseases: "High blood pressure, anemia", photo: "https://images.unsplash.com/photo-1571771894821-ce9b6b553831"},
+    {name: "Apple", type: "Fruit", protein: "0.5g", calories: "52", vitamins: "C, K, Fiber", season: "Autumn", temp: "15-21°C", origins: "Central Asia", benefits: "High fiber for gut, heart health, weight control", diseases: "Diabetes, heart disease", photo: "https://images.unsplash.com/photo-1560806887-1f58a95cb1e1"},
+    {name: "Mango", type: "Fruit", protein: "0.8g", calories: "60", vitamins: "A, C", season: "Summer", temp: "24-30°C", origins: "South Asia", benefits: "Immune boost, digestion, skin health", diseases: "Eye health, immune weakness", photo: "https://images.unsplash.com/photo-1560131180-5e7b5c5b7e1f"},
+    {name: "Broccoli", type: "Vegetable", protein: "3g", calories: "34", vitamins: "C, K, Folate", season: "Cool", temp: "18-24°C", origins: "Italy", benefits: "Anti-cancer compounds, vitamin boost", diseases: "Cancer prevention, bone health", photo: "https://images.unsplash.com/photo-1628773827229-c1713f8813c4"},
+    {name: "Carrot", type: "Vegetable", protein: "0.9g", calories: "41", vitamins: "A, K", season: "Cool", temp: "15-21°C", origins: "Europe/Asia", benefits: "Eye health, immune support", diseases: "Vision problems, weak immunity", photo: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37"},
+    {name: "Tomato", type: "Fruit/Veg", protein: "0.9g", calories: "18", vitamins: "C, K, Lycopene", season: "Summer", temp: "21-27°C", origins: "South America", benefits: "Antioxidants for heart/skin", diseases: "Heart disease, cancer prevention", photo: "https://images.unsplash.com/photo-1561136594-7f684a40a4cb"},
+    {name: "Spinach", type: "Vegetable", protein: "2.9g", calories: "23", vitamins: "A, K, Folate", season: "Cool", temp: "15-21°C", origins: "Persia", benefits: "Iron for blood, bone health", diseases: "Anemia, osteoporosis", photo: "https://images.unsplash.com/photo-1576045059046-1d1b66c5e64b"},
+    {name: "Orange", type: "Fruit", protein: "0.9g", calories: "47", vitamins: "C", season: "Winter", temp: "15-29°C", origins: "China", benefits: "Immune boost, skin health", diseases: "Colds, scurvy", photo: "https://images.unsplash.com/photo-1547514701-5e9eeb3e92b3"},
+    // Add 150+ more like this: Strawberry, Kale, Blueberry, Pomegranate, Pineapple, Avocado, Lemon, Lime, Grapefruit, Blackberries, Watermelon, Kiwi, Pear, Peach, Plum, Cherry, Grape, Raspberry, Beet, Cauliflower, Cabbage, Brussels Sprouts, Asparagus, Eggplant, Garlic, Onion, Potato, Sweet Potato, Pumpkin, Zucchini, Cucumber, Bell Pepper, Chili Pepper, Green Peas, Lettuce, Celery, Radish, Turnip, Ginger, Turmeric...
+    // Full lists: Harvard Nutrition Source (powerhouse F&V), USDA database
+];
 
         // Same display script as before, with 3D fallback to photo
         // ... (full script from previous)
