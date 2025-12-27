@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healtery - Fruits & Veggies Encyclopedia</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f8f0; margin: 0; padding: 20px; text-align: center; }
+        h1 { color: #2e8b57; }
+        #search { width: 90%; max-width: 600px; padding: 15px; font-size: 18px; border-radius: 10px; border: 2px solid #2e8b57; margin: 20px auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .info { padding: 15px; }
+        .intro { font-weight: bold; color: #2e8b57; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+    <h1>Healtery Encyclopedia</h1>
+    <p>Search any fruit or vegetable for instant nutrition, benefits & more!</p>
+    <input type="text" id="search" placeholder="Type here... e.g., Banana, Carrot, Mango">
+    <div id="results" class="grid"></div>
+
+    <script>
+        const data = [
+            {name: "Banana", type: "Fruit", protein: "1.3g", season: "Year-round", temp: "25-30°C", benefits: "Rich in potassium, aids digestion, quick energy", diseases: "Heart health, blood pressure", photo: "https://images.unsplash.com/photo-1571771894821-ce9b6b553831"},
+            {name: "Apple", type: "Fruit", protein: "0.5g", season: "Autumn", temp: "15-21°C", benefits: "High fiber, heart health, weight control", diseases: "Heart disease, diabetes", photo: "https://images.unsplash.com/photo-1560806887-1f58a95cb1e1"},
+            {name: "Mango", type: "Fruit", protein: "0.8g", season: "Summer", temp: "24-30°C", benefits: "Vitamin C boost, digestion, skin health", diseases: "Immune support, eye health", photo: "https://images.unsplash.com/photo-1560131180-5e7b5c5b7e1f"},
+            {name: "Broccoli", type: "Vegetable", protein: "3g", season: "Cool", temp: "18-24°C", benefits: "Vitamin C & K, anti-cancer compounds", diseases: "Cancer prevention, bone health", photo: "https://images.unsplash.com/photo-1628773827229-c1713f8813c4"},
+            {name: "Carrot", type: "Vegetable", protein: "0.9g", season: "Cool", temp: "15-21°C", benefits: "Beta-carotene for eyes, immune boost", diseases: "Vision, immunity", photo: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37"},
+            // Add more items later — start with these 5 for MVP
+        ];
+
+        const resultsDiv = document.getElementById('results');
+        const searchInput = document.getElementById('search');
+
+        function displayItems(items) {
+            resultsDiv.innerHTML = '';
+            if (items.length === 0) {
+                resultsDiv.innerHTML = '<p>No results found. Try another name!</p>';
+                return;
+            }
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${item.photo}" alt="${item.name}">
+                    <div class="info">
+                        <h2>${item.name} (${item.type})</h2>
+                        <p class="intro">Quick Intro: ${item.benefits.split(',')[0]}.</p>
+                        <p><strong>Protein:</strong> ${item.protein}</p>
+                        <p><strong>Best Season:</strong> ${item.season}</p>
+                        <p><strong>Growth Temp:</strong> ${item.temp}</p>
+                        <p><strong>Benefits:</strong> ${item.benefits}</p>
+                        <p><strong>Helps With:</strong> ${item.diseases}</p>
+                    </div>
+                `;
+                resultsDiv.appendChild(card);
+            });
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = data.filter(item => item.name.toLowerCase().includes(query));
+            displayItems(filtered);
+        });
+
+        displayItems(data); // Show all on load
+    </script>
+</body>
+</html>
